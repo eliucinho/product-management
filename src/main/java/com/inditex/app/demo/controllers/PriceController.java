@@ -21,7 +21,7 @@ public class PriceController {
     private PriceService priceService;
 
     @GetMapping
-    public ResponseEntity<PriceDTO> getPrice(
+    public ResponseEntity<?> getPrice(
             @RequestParam("applicationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
             @RequestParam("productId") Long productId,
             @RequestParam("brandId") Long brandId
@@ -30,9 +30,9 @@ public class PriceController {
             PriceDTO priceDTO = priceService.getPrice(applicationDate, productId, brandId);
             return ResponseEntity.ok(priceDTO);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + e.getMessage());
         }
     }
 }
