@@ -1,0 +1,43 @@
+@startuml
+title Class Diagram - Controllers, Strategy Layer, and Value Objects
+
+' Controllers
+interface PriceApi {
+    + getPrice(applicationDate: LocalDateTime, productId: Long, brandId: Long): ResponseEntity<?>
+}
+
+class PriceController {
+    - PriceService priceService
+    + getPrice(applicationDate: LocalDateTime, productId: Long, brandId: Long): ResponseEntity<?>
+}
+
+' Strategies
+interface SelectionStrategy {
+    + process(request: PriceRequest): PriceDTO
+}
+
+class HighestPrioritySelectionStrategy {
+    - PriceRepository priceRepository
+    - PriceMapper priceMapper
+    + process(request: PriceRequest): PriceDTO
+}
+
+' Value Objects
+class PriceRequest {
+    LocalDateTime appDate
+    Long productId
+    Long brandId
+    + getAppDate(): LocalDateTime
+    + getProductId(): Long
+    + getBrandId(): Long
+}
+
+' Relationships
+PriceController --> PriceService
+PriceController --> PriceApi
+SelectionStrategy --> PriceRepository
+SelectionStrategy --> PriceMapper
+SelectionStrategy --> PriceRequest
+HighestPrioritySelectionStrategy --> SelectionStrategy
+
+@enduml

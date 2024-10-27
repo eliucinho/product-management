@@ -35,7 +35,7 @@ replay_pid*
 /target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 /target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
 /target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
-/target/surefire-reports/com.inditex.app.demo.DemoApplicationTests.txt
-/target/surefire-reports/TEST-com.inditex.app.demo.DemoApplicationTests.xml
+/target/surefire-reports/com.inditex.app.ApplicationTests.txt
+/target/surefire-reports/TEST-com.inditex.app.ApplicationTests.xml
 /target/*
 /.idea/

@@ -1,0 +1,72 @@
+@startuml
+title Class Diagram - Core Components (Entities, Repositories, Services, Mappers)
+
+' Entities
+class Price {
+    PriceId priceId
+    int priceList
+    int priority
+    Double price
+    String currency
+    + getPriceId(): PriceId
+    + getPriceList(): int
+    + getPriority(): int
+    + getPrice(): Double
+    + getCurrency(): String
+}
+
+class PriceId {
+    Long productId
+    Long brandId
+    LocalDateTime startDate
+    LocalDateTime endDate
+    + getProductId(): Long
+    + getBrandId(): Long
+    + getStartDate(): LocalDateTime
+    + getEndDate(): LocalDateTime
+}
+
+' DTOs
+class PriceDTO {
+    Integer productId
+    Integer brandId
+    Integer priceList
+    LocalDateTime startDate
+    LocalDateTime endDate
+    Double price
+}
+
+' Repositories
+interface PriceRepository {
+    + findTopByPriceId_ProductIdAndPriceId_BrandIdAndPriceId_StartDateLessThanEqualAndPriceId_EndDateGreaterThanEqualOrderByPriorityDesc(
+        productId: Long, brandId: Long, startDate: LocalDateTime, endDate: LocalDateTime
+    ): Optional<Price>
+}
+
+' Mappers
+interface PriceMapper {
+    + toDto(price: Price): PriceDTO
+}
+
+' Services
+interface PriceService {
+    + getPrice(applicationDate: LocalDateTime, productId: Long, brandId: Long): PriceDTO
+}
+
+class PriceServiceImpl {
+    - PriceRepository priceRepository
+    - PriceMapper priceMapper
+    + getPrice(applicationDate: LocalDateTime, productId: Long, brandId: Long): PriceDTO
+}
+
+' Relationships
+Price "1" -- "1" PriceId
+PriceRepository --|> JpaRepository
+PriceRepository --> Price
+PriceMapper --> Price
+PriceMapper --> PriceDTO
+PriceServiceImpl --> PriceMapper
+PriceServiceImpl --> PriceRepository
+PriceServiceImpl --> PriceService
+
+@enduml
