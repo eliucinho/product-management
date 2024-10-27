@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Price {
 
     @EmbeddedId
-    private PriceId id;
+    private PriceId priceId;
 
     @Column(name = "PRICE_LIST")
     private int priceList;
@@ -23,8 +23,28 @@ public class Price {
     private int priority;
 
     @Column(name = "PRICE")
-    private double price;
+    private Double price;
 
     @Column(name = "CURR")
     private String currency;
+
+    public PriceId getPriceId() {
+        return priceId;
+    }
+
+    public int getPriceList() {
+        return priceList;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
 }
