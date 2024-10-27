@@ -1,5 +1,6 @@
 package com.inditex.app.controllers;
 
+import com.inditex.app.constanst.ErrorMessages;
 import com.inditex.app.dto.PriceDTO;
 import com.inditex.app.services.PriceService;
 import com.inditex.app.strategies.inputs.PriceRequest;
@@ -10,8 +11,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
@@ -67,6 +72,21 @@ class PriceControllerTest {
         assertEquals(expectedPrice, responseBody.getPrice(), "Expected price to match");
 
         System.out.println("Test passed: " + testCaseDescription + " with expected price: " + expectedPrice);
+    }
+
+    @Test
+    void testGetPriceThrowsRuntimeException() {
+        PriceRequest priceRequest = createPriceRequest(LocalDateTime.of(2020, 6, 14, 10, 0));
+        String errorMessage = "No price found for the given parameters";
+
+        when(priceService.getPrice(priceRequest.getAppDate(), priceRequest.getProductId(), priceRequest.getBrandId()))
+                .thenThrow(new RuntimeException(errorMessage));
+
+        ResponseEntity<?> response = priceController.getPrice(
+                priceRequest.getAppDate(), priceRequest.getProductId(), priceRequest.getBrandId());
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode(), "Expected HTTP status 404 Not Found");
+        assertEquals("Error: " + errorMessage, response.getBody(), "Expected error message to match");
     }
 
     private static PriceRequest createPriceRequest(LocalDateTime appDate) {

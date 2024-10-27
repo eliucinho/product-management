@@ -14,7 +14,4 @@ public interface PriceMapper {
     @Mapping(source = "priceId.endDate", target = "endDate")
     PriceDTO toDto(Price price);
 
-    default Double mapPriceToDouble(Price price) {
-        return price != null ? price.getPrice() : null;
-    }
 }
