@@ -4,13 +4,31 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
 @Data
+@Schema(description = "Details about the price for a product")
 public class PriceDTO {
+
+    @Schema(description = "The product ID", example = "35455", required = true)
     private Integer productId;
+
+    @Schema(description = "The brand (chain) ID", example = "1", required = true)
     private Integer brandId;
+
+    @Schema(description = "The ID of the price list that applies", example = "1", required = true)
     private Integer priceList;
+
+    @Schema(description = "The start date of the price application period", example = "2020-06-14T00:00:00", required = true, type = "string", format = "date-time")
     private LocalDateTime startDate;
+
+    @Schema(description = "The end date of the price application period", example = "2020-12-31T23:59:59", required = true, type = "string", format = "date-time")
     private LocalDateTime endDate;
+
+    @Schema(description = "The price that applies for the product in the specified time range", example = "35.50", required = true)
     private Double price;
 
     public Integer getProductId() {

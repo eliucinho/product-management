@@ -1,0 +1,21 @@
+@startuml
+title Sequence Diagram - Get Price with Strategy and Database Interaction
+
+actor Client
+Client -> PriceController: getPrice(applicationDate, productId, brandId)
+PriceController -> PriceService: getPrice(applicationDate, productId, brandId)
+PriceService -> SelectionStrategy: process(PriceRequest)
+
+alt Highest Priority Strategy
+    SelectionStrategy -> HighestPrioritySelectionStrategy: process(PriceRequest)
+    HighestPrioritySelectionStrategy -> PriceRepository: query(PriceRequest)
+    PriceRepository -> Database: Execute Query
+    Database --> PriceRepository: Price (data)
+    PriceRepository --> HighestPrioritySelectionStrategy: Price
+    HighestPrioritySelectionStrategy --> PriceService: PriceDTO
+end
+
+PriceService --> PriceController: PriceDTO
+PriceController --> Client: ResponseEntity(PriceDTO)
+
+@enduml
