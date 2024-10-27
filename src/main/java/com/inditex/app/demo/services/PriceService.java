@@ -26,10 +26,6 @@ public class PriceService{
     }
 
     private PriceRequest buildRequest(LocalDateTime applicationDate, Long productId, Long brandId){
-        return PriceRequest.builder()
-                .appDate(applicationDate)
-                .productId(productId)
-                .brandId(brandId)
-                .build();
+        return new PriceRequest(applicationDate,productId,brandId);
     }
 }
