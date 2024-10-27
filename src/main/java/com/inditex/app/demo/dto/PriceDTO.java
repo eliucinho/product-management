@@ -1,4 +1,4 @@
-package com.inditex.app.demo;
+package com.inditex.app.demo.dto;
 
 import lombok.Data;
 
