@@ -1,0 +1,30 @@
+@startuml
+title Component Diagram - Price Service API
+
+package "Client Interaction" {
+    [Client] --> [PriceController]
+}
+
+package "API Layer" {
+    [PriceController] --> [PriceService]
+}
+
+package "Service Layer" {
+    [PriceService] --> [SelectionStrategy]
+}
+
+package "Strategy Layer" {
+    [SelectionStrategy] <|.. [HighestPrioritySelectionStrategy]
+    [SelectionStrategy] --> [PriceMapper] : uses
+    [SelectionStrategy] --> [PriceRepository] : interacts
+}
+
+package "Data Access Layer" {
+    [PriceRepository] --> [H2_Database]
+}
+
+package "External Systems" {
+    [H2_Database] <<Database>>
+}
+
+@enduml
