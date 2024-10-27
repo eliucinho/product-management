@@ -1,11 +1,13 @@
 package com.inditex.app.demo.strategies.inputs;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Builder
 public class PriceRequest {
     private LocalDateTime appDate;
