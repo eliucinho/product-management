@@ -1,12 +1,11 @@
-package com.inditex.app.demo.repositories;
+package com.inditex.app.repositories;
 
-import com.inditex.app.demo.models.Price;
-import com.inditex.app.demo.models.PriceId;
+import com.inditex.app.models.Price;
+import com.inditex.app.models.PriceId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Repository

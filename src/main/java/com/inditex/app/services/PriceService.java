@@ -1,9 +1,9 @@
-package com.inditex.app.demo.services;
+package com.inditex.app.services;
 
-import com.inditex.app.demo.dto.PriceDTO;
-import com.inditex.app.demo.mappers.PriceMapper;
-import com.inditex.app.demo.strategies.SelectionStrategy;
-import com.inditex.app.demo.strategies.inputs.PriceRequest;
+import com.inditex.app.dto.PriceDTO;
+import com.inditex.app.mappers.PriceMapper;
+import com.inditex.app.strategies.SelectionStrategy;
+import com.inditex.app.strategies.inputs.PriceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

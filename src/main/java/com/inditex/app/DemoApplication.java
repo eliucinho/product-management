@@ -1,4 +1,4 @@
-package com.inditex.app.demo;
+package com.inditex.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

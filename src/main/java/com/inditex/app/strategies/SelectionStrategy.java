@@ -1,4 +1,4 @@
-package com.inditex.app.demo.strategies;
+package com.inditex.app.strategies;
 
 public interface SelectionStrategy<T,R>{
     R process(T request);

@@ -1,7 +1,7 @@
-package com.inditex.app.demo.mappers;
+package com.inditex.app.mappers;
 
-import com.inditex.app.demo.models.Price;
-import com.inditex.app.demo.dto.PriceDTO;
+import com.inditex.app.models.Price;
+import com.inditex.app.dto.PriceDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

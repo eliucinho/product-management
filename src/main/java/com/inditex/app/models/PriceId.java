@@ -1,4 +1,4 @@
-package com.inditex.app.demo.models;
+package com.inditex.app.models;
 
 import jakarta.persistence.Embeddable;
 

@@ -1,4 +1,4 @@
-package com.inditex.app.demo.strategies.inputs;
+package com.inditex.app.strategies.inputs;
 
 import lombok.Builder;
 import lombok.Getter;
