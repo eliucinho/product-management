@@ -45,4 +45,24 @@ public class Price {
     public String getCurrency() {
         return currency;
     }
+
+    public void setPriceId(PriceId priceId) {
+        this.priceId = priceId;
+    }
+
+    public void setPriceList(int priceList) {
+        this.priceList = priceList;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 }
