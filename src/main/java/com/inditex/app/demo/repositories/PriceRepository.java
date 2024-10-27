@@ -12,5 +12,5 @@ import java.util.Optional;
 @Repository
 public interface PriceRepository extends JpaRepository<Price, PriceId> {
     Optional<Price> findTopByProductIdAndBrandIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByPriorityDesc(
-            int productId, int brandId, LocalDateTime startDate, LocalDateTime endDate);
+            Long productId, Long brandId, LocalDateTime startDate, LocalDateTime endDate);
 }
